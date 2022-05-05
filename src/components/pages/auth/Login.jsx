@@ -4,6 +4,8 @@ import Axios from 'axios'
 import storage from '../../helpers/storage'
 import body from '../../helpers/body'
 
+// date picker: https://react-day-picker.js.org/
+
 import Alert from '../../layouts/partials/Alert'
 import Message from '../../layouts/partials/Message'
 
@@ -96,7 +98,15 @@ const Login = (props) => {
                             if(resp.data.data.passwordType === 'generated'){
                                 SetStep(1);
                             }else{
-                                navigate('/dashboard');
+
+                                if(resp.data.data.verification.basic === 'pending'){
+                                    navigate('/dashboard/settings/verification');
+                                }
+                                
+                                else{
+                                    navigate('/dashboard');
+                                }
+
                             }
                             
                         }else{
@@ -573,7 +583,7 @@ const Login = (props) => {
                                                     </div>
 
                                                     <div className='ui-text-center mrgt1 mrgb2'>
-                                                        <Link to="/login" className="font-mattermedium brandxp-lp fs-13">Try logging in again</Link>
+                                                        <Link onClick={(e) => { e.preventDefault(); SetStep(0); }} to="/login" className="font-mattermedium brandxp-lp fs-13">Try logging in again</Link>
                                                     </div>
                                                 </>
                                             }

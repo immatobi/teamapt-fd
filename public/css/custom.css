@@ -143,8 +143,35 @@ a:focus, a:active, .btn:focus, .btn:active{
 
 /* brand colors */
 
+.brandxp-neutral, .brandxp-neutral span{
+  color: #6f718d !important;
+}
+
+.bdr-brandxp-neutral{
+  border: 1px solid #fff;
+  border-color: #6f718d !important;
+}
+
+.brandxp-purple, .brandxp-purple span {
+  color: #4329D7 !important;
+}
+
+.bdr-brandxp-purple{
+  border: 1px solid #fff;
+  border-color: #4329D7 !important;
+}
+
+.bg-brandxp-purple{
+  background-color: #4329D7 !important;
+}
+
 .brandxp-dark, .brandxp-dark span {
   color: #1E1265 !important;
+}
+
+.bdr-brandxp-dark{
+  border: 1px solid #fff;
+  border-color: #1E1265 !important;
 }
 
 .bg-brandxp-dark{
@@ -155,12 +182,22 @@ a:focus, a:active, .btn:focus, .btn:active{
   color: #F45726 !important;
 }
 
+.bdr-brandxp-orange{
+  border: 1px solid #fff;
+  border-color: #F45726 !important;
+}
+
 .bg-brandxp-orange{
   background-color: #F45726 !important;
 }
 
 .brandxp-teal, .brandxp-teal span {
   color: #06CBF6 !important;
+}
+
+.bdr-brandxp-teal{
+  border: 1px solid #fff;
+  border-color: #06CBF6 !important;
 }
 
 .bg-brandxp-teal{
@@ -171,8 +208,17 @@ a:focus, a:active, .btn:focus, .btn:active{
   color: #C9C0FF !important;
 }
 
+.bdr-brandxp-lp{
+  border: 1px solid #fff;
+  border-color: #C9C0FF !important;
+}
+
 .bg-brandxp-lp{
   background-color: #C9C0FF !important;
+}
+
+.bg-brandxp-lplight{
+  background-color: #e4e0fe !important;
 }
 
 .gradient-orange{
@@ -331,6 +377,9 @@ a:focus, a:active, .btn:focus, .btn:active{
   min-width: 140px;
 }
 
+.btn.stretch-md{
+  min-width: 130px;
+}
 .btn.smd{
   padding: 0.65rem 1.1rem;
   font-size: 13px;
@@ -819,7 +868,7 @@ position: relative;
 .xp-loader {
   display: inline-block;
   border: 5px solid transparent; /* Light grey */
-  border-top: 5px solid #2196F3; /* Blue */
+  border-top: 5px solid #37269a; /* Blue */
   border-radius: 100%;
   width: 80px;
   height: 80px;
@@ -883,6 +932,11 @@ position: relative;
   transition: all 0.15s ease;
 }
 
+.link-round.mini{
+  width: 20px;
+  height: 20px;
+}
+
 .link-round.md{
   width: 45px;
   height: 45px;
@@ -907,7 +961,7 @@ position: relative;
 
 .link-round:hover{
   color: #fff !important;
-  background-color: #01abed !important;
+  background-color: #F45726 !important;
 }
 
 .text-elipsis {
@@ -1025,5 +1079,56 @@ position: relative;
 .auth-form .btn{
   border-radius: 10px;
 }
-/** end auth form
+/** end auth form */
+
+/* icons */
+[class*='xp-'] .path1::before{
+  color: #7863F2
+}
+[class*='xp-'] .path2::before{
+  color: #c5bbfd
+}
+
+[class*='xp-'].dark .path1::before{
+  color: #37269a
+}
+[class*='xp-'].dark .path2::before{
+  color: #5e47e4
+}
+/* end icons */
+
+/* generics */
+.flatpickr-calendar{
+  top: 416.375px !important;
+}
+
+.drop-arrow {
+  position: absolute;
+  right: 1.3rem;
+  top: 2.6rem
+}
+
+.doc-box{
+  padding: 1.3rem 2rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #dcd9ed;
+  border-radius: 10px;
+  flex-direction: column;
+}
+
+.doc-box.option{
+  position: relative;
+  min-height: 150px;
+}
+
+.doc-box.option:hover,
+.doc-box.option.active{
+  border: 1px solid #F45726;
+}
+.doc-box.option.selected{
+  border: 1px solid #0ec64b;
+}
+/* end generics */
   

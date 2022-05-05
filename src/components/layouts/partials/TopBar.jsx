@@ -8,7 +8,7 @@ import Toast from '../../layouts/partials/Toast'
 
 const TopBar = ({ isFixed, pageTitle, showBack, barType, collapsed, barCollapsed, expandFunc }) => {
 
-    const history = useNavigate();
+    const navigate = useNavigate();
 
     const userContext = useContext(UserContext)
 
@@ -48,7 +48,7 @@ const TopBar = ({ isFixed, pageTitle, showBack, barType, collapsed, barCollapsed
 
     const back = (e) => {
         if(e) e.preventDefault();
-        history.goBack();
+        navigate(-1)
     }
 
     const logout = async (e) => {
@@ -56,7 +56,7 @@ const TopBar = ({ isFixed, pageTitle, showBack, barType, collapsed, barCollapsed
         if(e) e.preventDefault();
 
         storage.clearAuth();
-        history.push('/');
+        navigate('/');
 
         await Axios.post(`${process.env.REACT_APP_AUTH_URL}/auth/logout`,{}, config);
     }

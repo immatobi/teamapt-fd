@@ -802,6 +802,7 @@
   .ui-body-content-inner {
     margin-top:4rem;
     padding: 1rem 2rem;
+    padding-right: 2.5rem;
   }
   
   .ui-body-content .ui-content-header {

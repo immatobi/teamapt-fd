@@ -706,6 +706,7 @@ a {
 .pdt10{
     padding-top: 10em !important;
 }
+
 /*padding bottom*/
 .pdb{
     padding-bottom: 0.5em !important;
@@ -740,6 +741,109 @@ a {
 .pdb10{
     padding-bottom: 10em !important;
 }
+
+/*padding mx*/
+.pdx.pxhf{
+	padding-left: 0.25rem !important;
+	padding-right: 0.25rem !important;
+}
+.pdx{
+	padding-left: 0.5rem !important;
+	padding-right: 0.5rem !important;
+}
+.pdx1{
+	padding-left: 1rem !important;
+	padding-right: 1rem !important;
+}
+.pdx1.pxhf{
+	padding-left: 1.5rem !important;
+	padding-right: 1.5rem !important;
+}
+
+.pdx2{
+	padding-left: 2rem !important;
+	padding-right: 2rem !important;
+}
+.pdx3{
+	padding-left: 3rem !important;
+	padding-right: 3rem !important;
+}
+.pdx4{
+	padding-left: 4rem !important;
+	padding-right: 4rem !important;
+}
+.pdx5{
+	padding-left: 5rem !important;
+	padding-right: 5rem !important;
+}
+.pdx6{
+	padding-left: 5rem !important;
+	padding-right: 5rem !important;
+}
+.pdx7{
+	padding-left: 7rem !important;
+	padding-right: 7rem !important;
+}
+.pdx8{
+	padding-left: 8rem !important;
+	padding-right: 8rem !important;
+}
+.pdx9{
+	padding-left: 9rem !important;
+	padding-right: 9rem !important;
+}
+.pdx10{
+	padding-left: 10rem !important;
+	padding-right: 10rem !important;
+}
+
+/*padding my*/
+.pdy{
+	padding-top: 0.5rem !important;
+	padding-bottom: 0.5rem !important;
+}
+.pdy1{
+	padding-top: 1rem !important;
+	padding-bottom: 1rem !important;
+}
+.pdy2{
+	padding-top: 2rem !important;
+	padding-bottom: 2rem !important;
+}
+.pdy3{
+    padding:3em 0 !important;
+	padding-top: 3rem !important;
+	padding-bottom: 3rem !important;
+}
+.pdy4{
+	padding-top: 4rem !important;
+	padding-bottom: 4rem !important;
+}
+.pdy5{
+	padding-top: 5rem !important;
+	padding-bottom: 5rem !important;
+}
+.pdy6{
+	padding-top: 6rem !important;
+	padding-bottom: 6rem !important;
+}
+.pdy7{
+	padding-top: 7rem !important;
+	padding-bottom: 7rem !important;
+}
+.pdy8{
+	padding-top: 8rem !important;
+	padding-bottom: 8rem !important;
+}
+.pdy9{
+	padding-top: 9rem !important;
+	padding-bottom: 9rem !important;
+}
+.pdy10{
+	padding-top: 10rem !important;
+	padding-bottom: 10rem !important;
+}
+
 /*colors*/
 .onteal, .onteal a
 {
@@ -1240,6 +1344,9 @@ a {
 }
 .border-silver {
 	border-color: #bdc3c7 !important;
+}
+.border-silvermd {
+	border-color: rgba(185,195,199,0.4) !important;
 }
 .border-silverlight {
 	border-color: rgba(185,195,199,0.2) !important;

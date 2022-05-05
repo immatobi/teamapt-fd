@@ -47,7 +47,7 @@ const App = () => {
                             <Route path='/dashboard' element={<DashboardLayout Component={DashHome} pageTitle="Dashboard" showBack={false} collapsed={true} />} />
 
                             {/* settings */}
-                            <Route path='/dashboard' element={<DashboardLayout Component={DashHome} pageTitle="Dashboard" showBack={false} collapsed={true} />} />
+                            <Route path='/dashboard/settings/verification' element={<DashboardLayout Component={Verification} pageTitle="Verification" showBack={true} collapsed={true} />} />
 
                         </Routes>
 

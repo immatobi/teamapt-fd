@@ -19,14 +19,14 @@ const SideBar = ({ collapsed, barCollapsed }) => {
 
     useEffect(() => {
 
-        // redirectToLogin();
+        redirectToLogin();
         setActive(storage.fetch('menu') ? storage.fetch('menu') : 'home');
-        
-        loadDefaults()
+        loadDefaults();
 
     }, [])
 
-    const loadDefaults = () => {
+    const loadDefaults = async () => {
+
         if(body.isObjectEmpty(userContext.user) === true){
             userContext.getUser();
         }
