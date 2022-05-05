@@ -14,6 +14,7 @@ const Login = React.lazy(() => import('./components/pages/auth/Login'));
 const Register = React.lazy(() => import('./components/pages/auth/Register'));
 
 const DashHome = React.lazy(() => import('./components/pages/dashboard/Home'));
+const Verification = React.lazy(() => import('./components/pages/dashboard/settings/verification/Verification'));
 
 
 const App = () => {
@@ -43,6 +44,9 @@ const App = () => {
                             <Route path='/login' element={<Login />} />
                             <Route path='/register' element={<Register />} />
 
+                            <Route path='/dashboard' element={<DashboardLayout Component={DashHome} pageTitle="Dashboard" showBack={false} collapsed={true} />} />
+
+                            {/* settings */}
                             <Route path='/dashboard' element={<DashboardLayout Component={DashHome} pageTitle="Dashboard" showBack={false} collapsed={true} />} />
 
                         </Routes>

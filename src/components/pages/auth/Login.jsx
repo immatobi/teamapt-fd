@@ -13,7 +13,8 @@ const Login = (props) => {
 
     const [step, SetStep] = useState(0);
     const [timer, setTimer] = useState(false);
-    const [loading, setLoading] = useState();
+    const [loading, setLoading] = useState(false);
+    const [qLoading, setQLoading] = useState(false);
     const [pass, setPass] = useState('password');
     const [loginData, setLoginData] = useState({
         email: '',
@@ -336,6 +337,54 @@ const Login = (props) => {
 
     }
 
+    const sendCode = async (e, type) => {
+
+        if(e) e.preventDefault();
+
+        const data = {
+            email: loginData.email
+        }
+
+        setQLoading(true);
+
+        await Axios.post(`${process.env.REACT_APP_AUTH_URL}/emails/send-${type}-code`, {...data}, storage.getConfig())
+        .then(async (resp) => {
+
+            if(resp.data.error === false && resp.data.status === 200){
+                
+                setAlert({...alert, type: "success", show:true, message: 'code sent successfully' });
+                setTimeout(()=> {
+                    setAlert({...alert, show:false});
+                }, 5000)
+
+                toggleTimer()
+
+            }
+
+            setQLoading(false)
+    
+        }).catch((err) => {
+    
+            if(err.response.data.errors.length > 0){
+
+                setAlert({...alert, type: "danger", show:true, message:err.response.data.errors[0]});
+                setTimeout(()=> {
+                    setAlert({...alert, show:false});
+                }, 5000)
+
+            }else{
+                setAlert({...alert, type: "danger", show:true, message:err.response.data.message});
+                setTimeout(()=> {
+                    setAlert({...alert, show:false});
+                }, 5000)
+            }
+
+            setQLoading(false);
+    
+        })
+
+    }
+
     return (
         <>
         
@@ -473,11 +522,11 @@ const Login = (props) => {
                                                         <img className='ui-relative' style={{ left: '-11px' }} src="../../images/assets/logo-white.png" alt="logo" />
                                                     </div>
 
-                                                    <p className='ui-text-center mrgb0 font-mattermedium brandxp-lp mrgb fs-18'>
+                                                    <p className='ui-text-center mrgb0 font-mattermedium brandxp-lp mrgb2 fs-18'>
                                                         Verify your account
                                                     </p>
 
-                                                    <p className='ui-text-center mrgb0 font-matterlight onwhite mrgb2 fs-15'>
+                                                    <p className='ui-text-center mrgb0 font-matterlight onwhite mrgb2 fs-14'>
                                                         You're required to verify your email.
                                                     </p>
 
@@ -498,9 +547,19 @@ const Login = (props) => {
                                                             </div>
 
                                                             <div className='col-5'>
-                                                                <Link to="" className={`btn btn-block md ghost ghost-orange height-53 flexed font-matterregular ${ timer ? 'disabled-pt' : '' }`}>
-                                                                    { timer ? <span id="timer" className='font-matterregular fs-14'>{ body.timer((60*30), "#timer") }</span> : "Send Code" }
-                                                                </Link>
+                                                                {
+                                                                    qLoading &&
+                                                                    <Link to="" className={`btn btn-block md ghost ghost-orange height-53 flexed font-matterregular disabled-lt`}>
+                                                                        <span className='xp-loader sm white'></span>
+                                                                    </Link>
+                                                                }
+                                                                {
+                                                                    !qLoading &&
+                                                                    <Link onClick={(e) => { sendCode(e, 'email') }} to="" className={`btn btn-block md ghost ghost-orange height-53 flexed font-matterregular ${ timer ? 'disabled-pt' : '' }`}>
+                                                                        { timer ? <span id="timer" className='font-matterregular fs-14'>{ body.timer((60*30), "#timer") }</span> : "Send Code" }
+                                                                    </Link>
+                                                                }
+                                                                
                                                             </div>
 
                                                         </div>
@@ -509,8 +568,12 @@ const Login = (props) => {
 
                                                     <div className='form-group mrgt2 mrgb2'>
                                                         <Link onClick={(e) => loginWithCode(e)} to="/" className={`btn btn-block lg bg-brandxp-orange font-matterbold onwhite ${ loading ? 'disabled-lt' : '' }`}>
-                                                            { loading ? <span className='xp-loader white sm'></span> : 'Submit' }
+                                                            { loading ? <span className='xp-loader white sm'></span> : 'Verify Account' }
                                                         </Link>
+                                                    </div>
+
+                                                    <div className='ui-text-center mrgt1 mrgb2'>
+                                                        <Link to="/login" className="font-mattermedium brandxp-lp fs-13">Try logging in again</Link>
                                                     </div>
                                                 </>
                                             }
