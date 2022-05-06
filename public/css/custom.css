@@ -1130,5 +1130,23 @@ position: relative;
 .doc-box.option.selected{
   border: 1px solid #0ec64b;
 }
+
+.form-drop .menu .menu__option .option__label,
+.form-drop .menu input, .form-drop .control {
+  font-family: 'matterregular' !important;
+}
+.form-drop{
+  border-radius: 6px !important;
+  border: 1px solid rgba(0, 40, 100, 0.12) !important;
+}
+.form-drop .control{
+  min-height: 48px !important;
+  border-radius: 10px;
+}
+.form-drop .control .single .single__image img {
+  width: 33px;
+  position: relative;
+  left: 0.3rem;
+}
 /* end generics */
   

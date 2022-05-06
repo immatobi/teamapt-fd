@@ -165,7 +165,7 @@ const SideBar = ({ collapsed, barCollapsed }) => {
                         </li>
 
                         <li className={ `${active === 'settings' ? 'active' : ''} nav-list` }>
-                            <Link onClick={(e) => goto(e, '/dashboard/settings', 'settings')} to='' className='ui-icon-animate link' title='Home'>
+                            <Link onClick={(e) => goto(e, '/dashboard/settings/verification', 'settings')} to='' className='ui-icon-animate link' title='Home'>
                                 <span style={{position: 'relative', left: '0', top: '1px', color: '#fff'}} className='xp-settings xp-webicon reverse'>
                                     <i className='path1 fs-23'></i>
                                     <i className='path2 fs-23'></i>

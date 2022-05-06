@@ -34,9 +34,9 @@ const Login = (props) => {
     useEffect(() => {
 
         SetStep(0);
-
         resourceContext.getIpAddress();
         resourceContext.getCountries(9999);
+        
 
     }, [])
 

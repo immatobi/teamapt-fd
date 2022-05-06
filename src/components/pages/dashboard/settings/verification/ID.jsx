@@ -147,7 +147,7 @@ const IDVerification = ({ status, userId }) => {
             const data = {
                 front: front,
                 back: back,
-                type: option === 'pass' ? 'passport' : option
+                type: option === 'pass' ? 'passport' : option === 'id' ? 'card' : option === 'license' ? 'license' : option 
             }
 
             setLoading(true);
@@ -206,7 +206,7 @@ const IDVerification = ({ status, userId }) => {
             <div className='d-flex align-items-center mrgt'>
                 <div className='ui-line-height'>
                     <h1 className='mrgb0 d-flex align-items-center'>
-                        <span className='font-mattermedium brandxp-purple fs-16 ui-relative' style={{ top: '-2px' }}>Verify your ID</span> 
+                        <span className='font-mattermedium brandxp-purple fs-16 ui-relative' style={{ top: '-2px' }}>{ status === 'pending' ? 'Verify your ID' : 'Waiting for approval' }</span> 
                     </h1>
                     {/* <p className='font-matterlight brandxp-neutral fs-14 mrgb0'>Details like name, and more.</p> */}
                 </div>
@@ -214,211 +214,281 @@ const IDVerification = ({ status, userId }) => {
             </div>
 
             <div className='ui-line bg-silverlight'></div>
+
+            {
+                status === 'pending' && 
+                <>
+                
+                    <form className='form verify-form' onSubmit={(e) => { e.preventDefault() }}>
+
+                        {
+                            step === 0 &&
+                            <>
+                            
+                                <p className='font-matterlight brandxp-neutral fs-14 mrgb1'>Choose your preferred ID verification and upload</p>
+
+                                <div className='row mrgt2 mrgb2'>
+
+                                    <div className='col-md-4'>
+
+                                        <Link onClick={(e) => selectOption(e, 'id')} to="" className={`doc-box option ${ option === 'id' ? 'active' : '' }`}>
+
+                                            {
+                                                option === 'id' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                            }
+
+                                            <img src='../../../images/icons/idcard.svg' alt="icon" />
+                                            <p className='font-matterregular brandxp-dark fs-14 mrgb0'>ID Card</p>
+
+                                        </Link>
+
+                                    </div>
+
+                                    <div className='col-md-4'>
+
+                                        <Link onClick={(e) => selectOption(e, 'pass')} to="" className={`doc-box option ${ option === 'pass' ? 'active' : '' }`}>
+
+                                            {
+                                                option === 'pass' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                            }
+
+                                            <img src='../../../images/icons/passp.svg' alt="icon" />
+                                            <p className='font-matterregular brandxp-dark fs-14 mrgb0'>Passport</p>
+
+                                        </Link>
+
+                                    </div>
+                                    <div className='col-md-4'>
+
+                                        <Link onClick={(e) => selectOption(e, 'license')} to="" className={`doc-box option ${ option === 'license' ? 'active' : '' }`}>
+
+                                            {
+                                                option === 'license' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                            }
+
+                                            <img src='../../../images/icons/license.svg' alt="icon" />
+                                            <p className='font-matterregular brandxp-dark fs-14 mrgb0'>Driver's license</p>
+
+                                        </Link>
+
+                                    </div>
+
+                                </div>
+
+                                <div className='ui-line bg-silverlight'></div>
+
+                                <div className='d-flex align-items-center mrgt2 mrgb1'>
+                                    <Link onClick={(e) => next(e)} to="" className={`btn md stretch-md bg-brandxp-orange font-mattermedium ml-auto onwhite`}>
+                                        Continue
+                                    </Link>
+                                </div>
+                            
+                            </>
+                        }
+
+                        {
+                            step === 1 &&
+                            <>
+                                <p className='font-matterlight brandxp-neutral fs-14 mrgb1'>click to upload the required files. Size should not be more than 2MB.</p>
+
+                                {
+                                    option === 'id' &&
+                                    <>
+                                    
+                                        <div className='row mrgt2 mrgb2'>
+
+                                            <div className='col-md-6'>
+
+                                                <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
+
+                                                <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
+
+                                                    {
+                                                        front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                                    }
+
+                                                    <img src={`${ front ? front : '../../../images/icons/idfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
+                                                    <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse front' }</p>
+
+                                                </Link>
+
+                                            </div>
+
+                                            <div className='col-md-6'>
+
+                                                <input onChange={(e) => browseFile(e, 'back')} ref={backLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
+
+                                                <Link onClick={(e) => openBackDialog(e)} to="" className={`doc-box option ${ back !== '' ? 'selected' : '' }`}>
+
+                                                    {
+                                                        back !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                                    }
+
+                                                    <img src={`${ back ? back : '../../../images/icons/idfront.svg' }`} width={back ? '90px' : ''} alt="icon" />
+                                                    <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${back ? 'text-elipsis md' : ''}`}>{ backName ? backName : 'Browse back' }</p>
+
+                                                </Link>
+
+                                            </div>
+
+                                        </div>
+                                    
+                                    </>
+                                }
+
+                                {
+                                    option === 'pass' &&
+                                    <>
+                                    
+                                        <div className='row mrgt2 mrgb2'>
+
+                                            <div className='col-md-6'>
+
+                                                <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
+
+                                                <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
+
+                                                    {
+                                                        front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                                    }
+
+                                                    <img src={`${ front ? front : '../../../images/icons/passpfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
+                                                    <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse file' }</p>
+
+                                                </Link>
+
+                                            </div>
+
+                                        </div>
+                                    
+                                    </>
+                                }
+
+                                {
+                                    option === 'license' &&
+                                    <>
+                                    
+                                        <div className='row mrgt2 mrgb2'>
+
+                                            <div className='col-md-6'>
+
+                                                <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
+
+                                                <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
+
+                                                    {
+                                                        front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                                    }
+
+                                                    <img src={`${ front ? front : '../../../images/icons/docfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
+                                                    <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse front' }</p>
+
+                                                </Link>
+
+                                            </div>
+
+                                            <div className='col-md-6'>
+
+                                                <input onChange={(e) => browseFile(e, 'back')} ref={backLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
+
+                                                <Link onClick={(e) => openBackDialog(e)} to="" className={`doc-box option ${ back !== '' ? 'selected' : '' }`}>
+
+                                                    {
+                                                        back !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                                    }
+
+                                                    <img src={`${ back ? back : '../../../images/icons/docback.svg' }`} width={back ? '90px' : ''} alt="icon" />
+                                                    <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${back ? 'text-elipsis md' : ''}`}>{ backName ? backName : 'Browse back' }</p>
+
+                                                </Link>
+
+                                            </div>
+
+                                        </div>
+                                    
+                                    </>
+                                }
+
+                                <div className='ui-line bg-silverlight'></div>
+
+                                <div className='d-flex align-items-center mrgt2 mrgb1'>
+                                    <Link onClick={(e) => prev(e)} to="" className={`link-round smd bg-brandxp-lp brandxp-dark`}>
+                                        <span className='fe fe-chevron-left'></span>
+                                    </Link>
+                                    <Link onClick={(e) => submit(e)} to="" className={`btn md stretch-md bg-brandxp-orange ${loading ? 'disabled-lt' : ''} font-mattermedium ml-auto onwhite`}>
+                                        { loading ? <span className='xp-loader sm white'></span> : 'Submit' }
+                                    </Link>
+                                </div>
+                            </>
+                        }
+
+                    </form>
+                
+                </>
+            }
+
+            {
+                status === 'submitted' && userContext.user.kyc && userContext.user.kyc.idData && userContext.user.kyc.idType &&
+                <>
+
+                    <div className='mrgb1 ui-line-height'>
+                        <span className='font-matterlight brandxp-neutral fs-14'>Your ID verification is awaiting approval. contact </span>
+                        <span className='font-matterregular brandxp-orange fs-14'>support@xpresschain.co</span>
+                        <span className='font-matterlight brandxp-neutral fs-14'> to speed up approval. This should normally take 24 hours</span>
+                    </div>
+
+                    <div className='row mrgt2 mrgb2 disabled-lt'>
+
+                        {
+                            (userContext.user.kyc.idType === 'card' || userContext.user.kyc.idType === 'license') &&
+                            <>
+                                <div className='col-md-6'>
+                                    <div className='doc-box option selected'>
+                                        <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                        <img src={userContext.user.kyc.idData.front} width={'90px'} alt="icon" />
+                                        <p className={`font-matterregular brandxp-dark fs-13 mrgb0 `}>
+                                            { userContext.user.kyc.idType === 'license' ? 'Front License' : 'Front ID'}
+                                        </p>
+                                    </div>
+                                </div>
+
+                                <div className='col-md-6'>
+                                    <div className='doc-box option selected'>
+                                        <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                        <img src={userContext.user.kyc.idData.back} width={'90px'} alt="icon" />
+                                        <p className={`font-matterregular brandxp-dark fs-13 mrgb0 `}>
+                                            { userContext.user.kyc.idType === 'card' ? 'Back License' : 'Back ID'}
+                                        </p>
+                                    </div>
+                                </div>
+                            </>
+                        }
+
+                        {
+                            userContext.user.kyc.idType === 'passport' &&
+                            <>
+                                <div className='col-md-6'>
+                                    <div className='doc-box option selected'>
+                                        <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
+                                        <img src={userContext.user.kyc.idData.front} width={'90px'} alt="icon" />
+                                        <p className={`font-matterregular brandxp-dark fs-13 mrgb0 `}>Passport ID</p>
+                                    </div>
+                                </div>
+                            </>
+                        }
+
+                        
+
+                    </div>
+
+                    <div className='mrgb1 ui-line-height'>
+                        <span className='font-matterlight brandxp-neutral fs-14'>You will not be able to proceed to the next verification until your current verification is approved. Please reach out to us if this is taking too long, though we are always responsive and swift to our users' verification requests.</span>
+                    </div>
+                
+                </>
+            }
             
-            <form className='form verify-form' onSubmit={(e) => { e.preventDefault() }}>
-
-                {
-                    step === 0 &&
-                    <>
-                    
-                        <p className='font-matterlight brandxp-neutral fs-14 mrgb1'>Choose your preferred ID verification and upload</p>
-
-                        <div className='row mrgt2 mrgb2'>
-
-                            <div className='col-md-4'>
-
-                                <Link onClick={(e) => selectOption(e, 'id')} to="" className={`doc-box option ${ option === 'id' ? 'active' : '' }`}>
-
-                                    {
-                                        option === 'id' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                    }
-
-                                    <img src='../../../images/icons/idcard.svg' alt="icon" />
-                                    <p className='font-matterregular brandxp-dark fs-14 mrgb0'>ID Card</p>
-
-                                </Link>
-
-                            </div>
-
-                            <div className='col-md-4'>
-
-                                <Link onClick={(e) => selectOption(e, 'pass')} to="" className={`doc-box option ${ option === 'pass' ? 'active' : '' }`}>
-
-                                    {
-                                        option === 'pass' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                    }
-
-                                    <img src='../../../images/icons/passp.svg' alt="icon" />
-                                    <p className='font-matterregular brandxp-dark fs-14 mrgb0'>Passport</p>
-
-                                </Link>
-
-                            </div>
-                            <div className='col-md-4'>
-
-                                <Link onClick={(e) => selectOption(e, 'license')} to="" className={`doc-box option ${ option === 'license' ? 'active' : '' }`}>
-
-                                    {
-                                        option === 'license' && <span className='ui-absolute link-round mini bg-brandxp-orange' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                    }
-
-                                    <img src='../../../images/icons/license.svg' alt="icon" />
-                                    <p className='font-matterregular brandxp-dark fs-14 mrgb0'>Driver's license</p>
-
-                                </Link>
-
-                            </div>
-
-                        </div>
-
-                        <div className='ui-line bg-silverlight'></div>
-
-                        <div className='d-flex align-items-center mrgt2 mrgb1'>
-                            <Link onClick={(e) => next(e)} to="" className={`btn md stretch-md bg-brandxp-orange font-mattermedium ml-auto onwhite`}>
-                                Continue
-                            </Link>
-                        </div>
-                    
-                    </>
-                }
-
-                {
-                    step === 1 &&
-                    <>
-                        <p className='font-matterlight brandxp-neutral fs-14 mrgb1'>click to upload the required files. Size should not be more than 2MB.</p>
-
-                        {
-                            option === 'id' &&
-                            <>
-                            
-                                <div className='row mrgt2 mrgb2'>
-
-                                    <div className='col-md-6'>
-
-                                        <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
-
-                                        <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
-
-                                            {
-                                                front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                            }
-
-                                            <img src={`${ front ? front : '../../../images/icons/idfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
-                                            <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse front' }</p>
-
-                                        </Link>
-
-                                    </div>
-
-                                    <div className='col-md-6'>
-
-                                        <input onChange={(e) => browseFile(e, 'back')} ref={backLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
-
-                                        <Link onClick={(e) => openBackDialog(e)} to="" className={`doc-box option ${ back !== '' ? 'selected' : '' }`}>
-
-                                            {
-                                                back !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                            }
-
-                                            <img src={`${ back ? back : '../../../images/icons/idfront.svg' }`} width={back ? '90px' : ''} alt="icon" />
-                                            <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${back ? 'text-elipsis md' : ''}`}>{ backName ? backName : 'Browse back' }</p>
-
-                                        </Link>
-
-                                    </div>
-
-                                </div>
-                            
-                            </>
-                        }
-
-                        {
-                            option === 'pass' &&
-                            <>
-                            
-                                <div className='row mrgt2 mrgb2'>
-
-                                    <div className='col-md-6'>
-
-                                        <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
-
-                                        <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
-
-                                            {
-                                                front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                            }
-
-                                            <img src={`${ front ? front : '../../../images/icons/passpfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
-                                            <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse file' }</p>
-
-                                        </Link>
-
-                                    </div>
-
-                                </div>
-                            
-                            </>
-                        }
-
-                        {
-                            option === 'license' &&
-                            <>
-                            
-                                <div className='row mrgt2 mrgb2'>
-
-                                    <div className='col-md-6'>
-
-                                        <input onChange={(e) => browseFile(e, 'front')} ref={frontLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
-
-                                        <Link onClick={(e) => openDialog(e)} to="" className={`doc-box option ${ front !== '' ? 'selected' : '' }`}>
-
-                                            {
-                                                front !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                            }
-
-                                            <img src={`${ front ? front : '../../../images/icons/docfront.svg' }`} width={front ? '90px' : ''} alt="icon" />
-                                            <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${front ? 'text-elipsis md' : ''}`}>{ frontName ? frontName : 'Browse front' }</p>
-
-                                        </Link>
-
-                                    </div>
-
-                                    <div className='col-md-6'>
-
-                                        <input onChange={(e) => browseFile(e, 'back')} ref={backLink} type="file" accept='image/*' className="form-control ui-hide fs-14 mm  on-black font-matterregular"  />
-
-                                        <Link onClick={(e) => openBackDialog(e)} to="" className={`doc-box option ${ back !== '' ? 'selected' : '' }`}>
-
-                                            {
-                                                back !== '' && <span className='ui-absolute link-round mini bg-apple' style={{ right: '1rem', top: '0.8rem' }}><span className='fe fe-check fs-13 onwhite'></span></span>
-                                            }
-
-                                            <img src={`${ back ? back : '../../../images/icons/docback.svg' }`} width={back ? '90px' : ''} alt="icon" />
-                                            <p className={`font-matterregular brandxp-dark fs-13 mrgb0 ${back ? 'text-elipsis md' : ''}`}>{ backName ? backName : 'Browse back' }</p>
-
-                                        </Link>
-
-                                    </div>
-
-                                </div>
-                            
-                            </>
-                        }
-
-                        <div className='ui-line bg-silverlight'></div>
-
-                        <div className='d-flex align-items-center mrgt2 mrgb1'>
-                            <Link onClick={(e) => prev(e)} to="" className={`link-round smd bg-brandxp-lp brandxp-dark`}>
-                                <span className='fe fe-chevron-left'></span>
-                            </Link>
-                            <Link onClick={(e) => submit(e)} to="" className={`btn md stretch-md bg-brandxp-orange ${loading ? 'disabled-lt' : ''} font-mattermedium ml-auto onwhite`}>
-                                { loading ? <span className='xp-loader sm white'></span> : 'Submit' }
-                            </Link>
-                        </div>
-                    </>
-                }
-
-            </form>
+            
         </>
     )
 

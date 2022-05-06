@@ -3,6 +3,8 @@ import React, { useContext, useEffect } from 'react'
 import UserContext from '../../../../../context/user/userContext'
 import Basic from './Basic';
 import IDBox from './ID';
+import FaceID from './Face';
+import Address from './Address';
 
 const Verification = (props) => {
 
@@ -172,7 +174,10 @@ const Verification = (props) => {
                                                 userContext.user.verification.ID === 'approved' &&
                                                 userContext.user.verification.face !== 'approved' &&
                                                 <>
-                                                
+                                                    <FaceID 
+                                                    status={userContext.user.verification.face}
+                                                    userId={userContext.user._id}
+                                                    />
                                                 </>
                                             }
 
@@ -182,7 +187,9 @@ const Verification = (props) => {
                                                 userContext.user.verification.face === 'approved' &&
                                                 userContext.user.verification.address !== 'approved' &&
                                                 <>
-                                                
+                                                    <Address 
+                                                    status={userContext.user.verification.address}
+                                                    userId={userContext.user._id} />
                                                 </>
                                             }
 

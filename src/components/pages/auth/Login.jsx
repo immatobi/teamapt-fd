@@ -95,14 +95,16 @@ const Login = (props) => {
 
                         if(!resp.data.data.isSuper && !resp.data.data.isAdmin){
 
+
                             if(resp.data.data.passwordType === 'generated'){
+
                                 SetStep(1);
+
                             }else{
 
-                                if(resp.data.data.verification.basic === 'pending'){
+                                if(resp.data.data.verification.basic !== 'approved'){
                                     navigate('/dashboard/settings/verification');
                                 }
-                                
                                 else{
                                     navigate('/dashboard');
                                 }
@@ -205,7 +207,19 @@ const Login = (props) => {
                             if(resp.data.data.passwordType === 'generated'){
                                 SetStep(1);
                             }else{
-                                navigate('/dashboard');
+                                
+                                if(resp.data.data.verification.basic !== 'approved'){
+                                    navigate('/dashboard/settings/verification');
+                                }else if(resp.data.data.verification.ID !== 'approved'){
+                                    navigate('/dashboard/settings/verification');
+                                }else if(resp.data.data.verification.face !== 'approved'){
+                                    navigate('/dashboard/settings/verification');
+                                }else if(resp.data.data.verification.address !== 'approved'){
+                                    navigate('/dashboard/settings/verification');
+                                }
+                                else{
+                                    navigate('/dashboard');
+                                }
                             }
                             
                         }else{
