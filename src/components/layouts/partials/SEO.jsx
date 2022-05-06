@@ -8,15 +8,15 @@ const SEO = ({ pageTitle, type }) => {
         title: 'TMP',
         description: 'Work with world top organizations as a top-tier talent',
         language: "en-US",
-        image: 'https://storage.googleapis.com/concreap-buckets/xp-seo.png',
+        image: 'https://storage.googleapis.com/concreap-buckets/xpc-seo.png',
         author: {
             email: `${process.env.REACT_APP_TMA_INFO_EMAIL}`,
             name: 'Xpresschain - Buy, Sell & Swap Cryptocurrencies',
-            image:'https://storage.googleapis.com/concreap-buckets/xp-seo.png'
+            image:'https://storage.googleapis.com/concreap-buckets/xpc-seo.png'
         },
         site: {
             siteName: 'Xpresschain - Buy, Sell & Swap Cryptocurrencies',
-            searchUrl: 'https://www.google.com/search?q=tma'
+            searchUrl: 'https://www.google.com/search?q=xpresschain'
         }
     }
     return (
