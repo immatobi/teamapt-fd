@@ -5,16 +5,7 @@ import loader from './components/helpers/loader';
 import { ErrorBoundary } from 'react-error-boundary';
 import ErrorUI from './components/layouts/globals/ErrorUI';
 
-import DashboardLayout from './components/layouts/globals/Dashboard';
-
-import ResourceState from './context/resource/resourceState';
-import UserState from './context/user/userState';
-
-const Login = React.lazy(() => import('./components/pages/auth/Login'));
-const Register = React.lazy(() => import('./components/pages/auth/Register'));
-
-const DashHome = React.lazy(() => import('./components/pages/dashboard/Home'));
-const Verification = React.lazy(() => import('./components/pages/dashboard/settings/verification/Verification'));
+const Home = React.lazy(() => import('./components/pages/Home'));
 
 
 const App = () => {
@@ -30,34 +21,19 @@ const App = () => {
 
     <Router>
 
-        <UserState>
+        <Suspense fallback={loader.MainLoader()}>
 
-            <ResourceState>
+            <ErrorBoundary FallbackComponent={ErrorUI} onReset={() => { window.location.reload() }} onError={errorHandler}>
 
-                <Suspense fallback={loader.MainLoader()}>
+                <Routes>
 
-                    <ErrorBoundary FallbackComponent={ErrorUI} onReset={() => { window.location.reload() }} onError={errorHandler}>
+                    <Route path='/' element={<Home />} />
 
-                        <Routes>
+                </Routes>
 
-                            <Route path='/' element={<Login />} />
-                            <Route path='/login' element={<Login />} />
-                            <Route path='/register' element={<Register />} />
+            </ErrorBoundary>
 
-                            <Route path='/dashboard' element={<DashboardLayout Component={DashHome} pageTitle="Dashboard" showBack={false} collapsed={true} />} />
-
-                            {/* settings */}
-                            <Route path='/dashboard/settings/verification' element={<DashboardLayout Component={Verification} pageTitle="Verification" showBack={true} collapsed={true} />} />
-
-                        </Routes>
-
-                    </ErrorBoundary>
-
-                </Suspense>
-
-            </ResourceState>
-
-        </UserState>
+        </Suspense>
 
     </Router>
 

@@ -1,13 +1,13 @@
 import React, { useEffect, useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 import Axios from 'axios'
-import storage from '../../helpers/storage'
-import body from '../../helpers/body'
+import storage from '../helpers/storage'
+import body from '../helpers/body'
 
 // date picker: https://react-day-picker.js.org/
 
-import Alert from '../../layouts/partials/Alert'
-import Message from '../../layouts/partials/Message'
+import Alert from '../layouts/partials/Alert'
+import Message from '../layouts/partials/Message'
 
 const Login = (props) => {
 
