@@ -423,6 +423,13 @@ img.coin-left{
   margin-left: -16rem;
 }
 
+img.top-stars{
+  width:1100px;
+  position: absolute;
+  top: 8rem;
+  left: 10rem;
+}
+
 img.coin-right{
   width: 113px;
   position: absolute;

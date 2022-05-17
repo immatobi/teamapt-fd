@@ -23,6 +23,8 @@ const Login = (props) => {
 
                 <div className="hero-inner lg top ui-relative ui-text-center ui-hidden-y">
 
+                    <img src="../../../images/assets/img@top-stars.png" alt="top-stars" className='top-stars' />
+
                     <img src="../../../images/assets/img@splash-light2.png" alt="splash-light" className='splash-light rotate' />
 
                     <div className='coin-box ui-text-center'>
@@ -33,6 +35,8 @@ const Login = (props) => {
 
                     <img src="../../../images/assets/icon@coin-left.svg" alt="coin-left" className='coin-left animated fastest fadeInUp bounce-fx' />
                     <img src="../../../images/assets/icon@coin-right.svg" alt="coin-right" className='coin-right animated fastest fadeInUp bounce-tx' />
+
+                    
 
                     <div className='container'>
 
@@ -87,9 +91,9 @@ const Login = (props) => {
                                     </div>
                                 </div>
 
-                                <div className='ui-text-center mrgt3 ui-relative animated fastest fadeInUp'>
+                                <div className='ui-text-center mrgt3 ui-relative'>
 
-                                    <Link to="" className='btn lg hero-btn onwhite fixed'>
+                                    <Link to="" className='btn lg hero-btn onwhite fixed animated fastest fadeInUp'>
                                         <span className='font-interbold onwhite fs-15 pdr2 pdl1'>Play The Game</span>
                                         <span className='fe fe-chevron-right onwhite fs-24 ui-relative' style={{ top: '5px' }}></span>
                                     </Link>
