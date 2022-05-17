@@ -5,12 +5,12 @@
 
 This Landing page is built with the ReactJs frontend (Javascript) Library, with pure HTML, CSS and Javascript as the coding language.
 
+## Live App Link
+Visit the landing pagere [here](https://teamapt-fd.herokuapp.com/)
+
 ## Usage
 
-- Pull the [codebase](https://github.com/immatobi/gamr-matches.git) from the repository.
-- Make sure to have Nodejs && Typescrit installed globally on your computer
-- Duplicate the .env.example file and rename it to .env
-- Supply all the .env values except the ones already supplied.
+- Pull the [codebase](https://github.com/immatobi/teamapt-fd) from the repository.
 
 ### Install dependencies
 ```
@@ -19,31 +19,8 @@ This Landing page is built with the ReactJs frontend (Javascript) Library, with 
 
 ### Run Application
 ```
-- Run in development mode --> "npm run dev"
-- Run in production mode --> "npm start"
+- Run the command --> "npm start"
 ```
-
-### Common commands
-```
-- Empty database --> "npm run seed-d"
-- Automatic test --> "npm run test"
-```
-
-### Important ENV variables
-```
-- MONGODB_URI : Your database connection string. Please use MongoDB
-- MONGODB_TEST_URI : Your test database connection string. Use MongoDB
-
-- REDIS_HOST: Your redis host connection string
-- REDIS_PORT: Your redis PORT
-
-```
-
-## API Documentation
-See the Application REST API documentation in the Postman link below.
-
-[API Doc. link - Gamr-Matches](https://documenter.getpostman.com/view/5093497/UyxgHnqm)
-
 
 ## Metadata
 
