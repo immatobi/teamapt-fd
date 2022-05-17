@@ -1,52 +1,14 @@
-import React, {useEffect, useContext, useState} from 'react';
-import { Link, useHistory } from 'react-router-dom';
-import storage from '../../helpers/storage'
-import body from '../../helpers/body'
-
-import "react-modal-video/scss/modal-video.scss"
-
-import JoinModal from '../../../components/pages/JoinModal'
+import React, {useEffect} from 'react';
+import { Link } from 'react-router-dom';
 
 const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
 
-    const [showNotify, setShowNotify] = useState(false);
-    let history = useHistory();
-
-    const [show, setShow] = useState(false)
-    const [isOpen, setOpen] = useState(false)
-    const [showJoin, setShowJoin] = useState(false)
 
     useEffect(() => {
-
-        body.fixNav();
 
     }, []);
 
 
-      const goto = (e, url, t) => {
-
-        if(e){
-            e.preventDefault()
-        }
-
-        history.push(url);
-  
-    }
-
-    const toggleLogin = (e) => {
-        if(e) e.preventDefault()
-        setShow(!show);
-    }
-
-    const scrollTo = (e, t) => {
-        if(e) e.preventDefault();
-        doScroll(e, t);
-    }
-
-    const toggleJoin = (e) => {
-        if(e) e.preventDefault()
-        setShowJoin(!showJoin)
-    }
 
     // this: used in pushing
     return (
@@ -61,10 +23,10 @@ const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
 
                             <nav className="main-nav navbar navbar-right navbar-expand-md">
 
-                                <Link to="/" className="navbar-brand logo" to=""><img src="../../../images/assets/logo-white.svg" alt="" /></Link>
+                                <Link to="/" className="navbar-brand logo"><img src="../../../images/assets/img@logo.svg" alt="" /></Link>
                             
                                 <div className="ml-auto d-flex align-items-center ui-hide">
-                                    <Link className="sd-menu md-menu onblack"><span className={`fe fe-menu fs-30`}></span></Link>
+                                    <Link to="" className="sd-menu md-menu onblack"><span className={`fe fe-menu fs-30`}></span></Link>
                                 </div>
 
                                 <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
@@ -82,17 +44,19 @@ const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
                                 </button>
                             
                             <div id="navbar-collapse" className="navbar-collapse collapse">
-                                {/* left */}
-                                <ul className="nav left-nav navbar-nav pdl3">
-                                    <li className="nav-item link"><Link onClick={(e) => scrollTo(e, 'curriculum')} className="nav-link onwhite font-mattersemibold fs-14" to="/">Curriculum</Link></li>
-                                    <li className="nav-item link"><Link onClick={(e) => scrollTo(e, 'why')} className="nav-link onwhite font-mattersemibold fs-14">The Why</Link></li>
-                                    <li className="nav-item link"><Link onClick={(e) => scrollTo(e, 'about')} className="nav-link onwhite font-mattersemibold fs-14">About</Link></li>
-                                </ul>
 
                                 {/* Right */}
                                 <ul class="nav navbar-nav right-nav ml-auto">
                                     <li className="nav-item link">
-                                        <Link onClick={(e) => toggleJoin(e)} className="nav-link nav-btn onwhite font-mattermedium btn md gradient-yellow font-matterbold onwhite" to="">Join The List</Link>
+                                        <Link to="" className="nav-cld">
+                                            <div className='cld-icon ui-text-center'>
+                                                <img src="../../../images/assets/icon@cld.svg" alt="cld-icon" />
+                                            </div>
+                                            <div className='cld-text ui-line-height-small pdl mrgl'>
+                                                <p className='onwhite font-interbold fs-17'>Day 1</p>
+                                                <span className='text-muted font-inter fs-13'>of 5</span>
+                                            </div>
+                                        </Link>
                                     </li>
                                 </ul>
                                 
@@ -109,8 +73,6 @@ const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
                 } */}
             
             </header>
-            
-            <JoinModal isShow={showJoin} closeModal={toggleJoin} modalTitle="Join Waiting List" flattened={true} slim="slim-mlg" />
             
         </>
     )

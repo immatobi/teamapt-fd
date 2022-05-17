@@ -1,0 +1,38 @@
+@font-face {
+    font-family: 'Inter-Light';
+    src: url('Inter-Light.woff2') format('woff2'),
+        url('Inter-Light.woff') format('woff');
+    font-weight: 300;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter-Bold';
+    src: url('Inter-Bold.woff2') format('woff2'),
+        url('Inter-Bold.woff') format('woff');
+    font-weight: bold;
+    font-style: normal;
+    font-display: swap;
+}
+
+@font-face {
+    font-family: 'Inter';
+    src: url('Inter-Regular.woff2') format('woff2'),
+        url('Inter-Regular.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+    font-display: swap;
+}
+
+/* definitions */
+.font-inter, .font-inter a, .font-inter span{
+    font-family: 'Inter' !important;
+}
+.font-interlight, .font-interlight a, .font-interlight span{
+    font-family: 'Inter-Light' !important;
+}
+.font-interbold, .font-interbold a, .font-interbold span{
+    font-family: 'Inter-Bold' !important;
+}
+

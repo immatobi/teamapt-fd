@@ -513,6 +513,9 @@ a {
 	margin-right: 2em !important;
 }
 /*margins left*/
+.mrgl{
+	margin-left: .25em !important;
+}
 .mrgl1{
 	margin-left: .5em !important;
 }
@@ -1191,6 +1194,9 @@ a {
 .ui-line-height{
 	line-height: 1.5em !important;
 }
+.ui-line-height-x{
+	line-height: 1.3em !important;
+}
 .ui-line-height-small{
 	line-height: 1em !important;
 }
@@ -1806,6 +1812,14 @@ a[class*="bg-"],input[class*="bg-"]
 
 .ui-push-box-left{
 	padding-right: 2rem;
+}
+
+.ui-hidden-y{
+	overflow-y: hidden;
+}
+
+.ui-hidden-x{
+	overflow-x: hidden;
 }
 
 

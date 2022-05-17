@@ -1,7 +1,3 @@
-import $ from 'jquery';
-
-var interval;
-
 let body = {};
 
 body.changeBackground = (cn) => {
@@ -13,5 +9,6 @@ body.changeBackground = (cn) => {
     }
 
 }
+
 
 export default body;

@@ -4,18 +4,18 @@ import { Helmet } from 'react-helmet';
 const SEO = ({ pageTitle, type }) => {
 
     const meta = {
-        url: 'https://xpresschain.co/',
+        url: 'https://teamapt-landing.co/',
         title: 'TMP',
-        description: 'Work with world top organizations as a top-tier talent',
+        description: 'TeamApt Landing Page',
         language: "en-US",
         image: 'https://storage.googleapis.com/concreap-buckets/xpc-seo.png',
         author: {
-            email: `${process.env.REACT_APP_TMA_INFO_EMAIL}`,
-            name: 'Xpresschain - Buy, Sell & Swap Cryptocurrencies',
+            email: `landing.co`,
+            name: 'TeamApt',
             image:'https://storage.googleapis.com/concreap-buckets/xpc-seo.png'
         },
         site: {
-            siteName: 'Xpresschain - Buy, Sell & Swap Cryptocurrencies',
+            siteName: 'TeamApt Landing',
             searchUrl: 'https://www.google.com/search?q=xpresschain'
         }
     }
@@ -23,21 +23,21 @@ const SEO = ({ pageTitle, type }) => {
         <>
             <Helmet>
                 <meta charSet="utf-8"></meta>
-                <title>{ type === 'main' ? meta.title + ' - ' + meta.description : !type ? 'Xpresschain' : pageTitle}</title>
+                <title>{ type === 'main' ? meta.title + ' - ' + meta.description : !type ? 'TeamApt Landing' : pageTitle}</title>
                 <meta name="description" content={meta.description}></meta>
                 <meta name="keywords" content="talent, app"></meta>
 
                 <meta itemprop="description" content={meta.description}></meta>
                 <meta itemprop="image" content={meta.image}></meta>
                 <meta name="twitter:card" content="summary_large_image"/>
-                <meta name="twitter:site" content="@xpresschain" />
-                <meta name="twitter:creator" content="@xpresschain" />
-                <meta name="twitter:title" content="Xpresschain - Buy, Sell & Swap Cryptocurrencies"/>
+                <meta name="twitter:site" content="@landing" />
+                <meta name="twitter:creator" content="@landing" />
+                <meta name="twitter:title" content="TeamApt Landing Page"/>
                 <meta name="twitter:description" content={meta.description}/>
                 <meta name="twitter:image" content={meta.image}/>
 
                 <meta property="og:site_name" content={meta.url} />
-                <meta property="og:title" content="Xpresschain - Buy, Sell & Swap Cryptocurrencies"/>
+                <meta property="og:title" content="TeamApt Landing Page"/>
                 <meta property="og:description" content={meta.description}/>
                 <meta property="og:image" content={meta.image}/>
                 <meta property="og:url" content={meta.url} />
