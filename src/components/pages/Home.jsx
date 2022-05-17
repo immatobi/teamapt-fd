@@ -33,8 +33,8 @@ const Login = (props) => {
                     
                     <img src="../../../images/assets/img@shiny.png" alt="shiny" className='shiny' />
 
-                    <img src="../../../images/assets/icon@coin-left.svg" alt="coin-left" className='coin-left animated fastest fadeInUp bounce-fx' />
-                    <img src="../../../images/assets/icon@coin-right.svg" alt="coin-right" className='coin-right animated fastest fadeInUp bounce-tx' />
+                    <img src="../../../images/assets/icon@coin-left.svg" alt="coin-left" className='coin-left animated fastest fadeInUp bounce-fx delay' />
+                    <img src="../../../images/assets/icon@coin-right.svg" alt="coin-right" className='coin-right animated fastest fadeInUp bounce-tx delay' />
 
                     
 
@@ -46,17 +46,28 @@ const Login = (props) => {
 
                                 <div className='ui-text-center mrgb1 caption-box'>
 
-                                    <h1 className='ui-line-height-small mrgb animated fastest fadeInUp'>
+                                    <h1 className='ui-line-height-small mrgb animated fastest fadeInUp ui-hide-mobile-only'>
                                         <p className='mrgb0 onwhite font-poppinslight caption'>Unlock to</p>
                                         <p className='mrgb0 onwhite font-poppinsbold caption'>Power your dreams!</p>
                                     </h1>
 
-                                    <div className='ui-line-height-large subcap-text animated fastest fadeInUp'>
+                                    <h1 className='ui-line-height-small mrgb animated fastest fadeInUp ui-show-mobile-only'>
+                                        <span className='mrgb0 onwhite font-poppinslight caption'>Unlock to </span>
+                                        <span className='mrgb0 onwhite font-poppinsbold caption'>Power your dreams!</span>
+                                    </h1>
+
+                                    <div className='ui-line-height-large subcap-text animated fastest fadeInUp ui-hide-mobile-only'>
                                         <p className='mrgb0 onwhite font-inter fs-30'>Stand a chance to win</p>
                                         <p className='mrgb0 onwhite'>
                                             <span className='fs-30 font-interbold'>&#8358;3,000,000 </span>
                                             <span className='fs-30 font-inter'>everyday for the next 5 days</span>
                                         </p>
+                                    </div>
+
+                                    <div className='ui-line-height-large subcap-text animated fastest fadeInUp ui-show-mobile-only'>
+                                        <span className='mrgb0 onwhite font-inter fs-31'>Stand a chance to win </span>
+                                        <span className='fs-31 font-interbold onwhite'>&#8358;3,000,000 </span>
+                                        <span className='fs-31 font-inter onwhite'> everyday for the next 5 days</span>
                                     </div>
 
                                 </div>
@@ -65,10 +76,10 @@ const Login = (props) => {
                                     <div className='col-md-6 mx-auto'>
 
                                         <div className='white-blob animated fastest fadeInUp'>
-                                            <div className='blob-inner pdy1'>
-                                                <p className='font-interbold fs-16 mrgb1 mrgt onwhite ui-text-center'>🚀 How To Play</p>
 
-                                                <div className='ui-line-height-x'>
+                                            <p className='font-interbold fs-16 mrgb1 mrgt onwhite ui-text-center'>🚀 How To Play</p>
+
+                                                <div className='ui-line-height-x ui-text-left'>
                                                     <p className='font-inter fs-13 mrgb0 onwhite'>1. Guess the right combination of numbers</p>
                                                     <p className='mrgb0 onwhite'>
                                                         <span className='font-inter fs-13'>2. Win </span>
@@ -77,16 +88,16 @@ const Login = (props) => {
                                                     </p>
                                                 </div>
 
-                                                <p className='font-inter fs-13 mrgb0 onwhite'>Sounds unbelievable? Well, guess right & see for yourself!</p>
+                                                <p className='font-inter fs-13 mrgb0 onwhite ui-text-left ui-line-height'>Sounds unbelievable? Well, guess right & see for yourself!</p>
 
                                                 <div className='black-box mrgt1'>
                                                     <p className='fs-16 mrgb0'>💡</p>
-                                                    <p className='font-inter fs-12 mrgb1 onwhite pdl ui-line-height-x mrgt'>Think well before you guess. You have only 2 attempts per day and even after you wi, you can come back the next day to try for another jackpot!</p>
+                                                    <p className='font-inter fs-12 mrgb1 onwhite pdl ui-line-height-x mrgt ui-text-left'>Think well before you guess. You have only 2 attempts per day and even after you wi, you can come back the next day to try for another jackpot!</p>
                                                 </div>
-
-                                            </div>
-                                            <img src="../../../images/assets/img@hug.png" alt="hug-bg" />
+                                            
                                         </div>
+
+
 
                                     </div>
                                 </div>

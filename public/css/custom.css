@@ -362,6 +362,10 @@ position: relative;
 }
 .white-blob{
   position: relative;
+  padding: 24px 1.3rem;
+  background: linear-gradient(180deg, rgba(255, 255, 255, 0.39) -213.5%, rgba(255, 255, 255, 0) 100%);
+  box-shadow: inset 0px -1px 11px rgba(255, 255, 255, 0.17), inset 0px 2px 0px rgba(255, 255, 255, 0.24);
+  border-radius: 8px;
 }
 .white-blob .blob-inner{
   position: absolute;
@@ -485,6 +489,11 @@ img.coin-right{
 
   -webkit-animation-duration: 20000s !important;
 	animation-duration: 20000s !important;
+}
+
+.delay{
+  -webkit-animation-delay: 5s;
+  animation-delay: 5s;
 }
 
 

@@ -25,11 +25,20 @@ const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
 
                                 <Link to="/" className="navbar-brand logo"><img src="../../../images/assets/img@logo.svg" alt="" /></Link>
                             
-                                <div className="ml-auto d-flex align-items-center ui-hide">
-                                    <Link to="" className="sd-menu md-menu onblack"><span className={`fe fe-menu fs-30`}></span></Link>
+                                <div className="ml-auto d-flex align-items-center ui-show-mobile-only">
+                                    {/* <Link to="" className="sd-menu md-menu onblack"><span className={`fe fe-menu fs-30`}></span></Link> */}
+                                    <Link to="" className="nav-cld">
+                                        <div className='cld-icon ui-text-center'>
+                                            <img src="../../../images/assets/icon@cld.svg" alt="cld-icon" />
+                                        </div>
+                                        <div className='cld-text ui-line-height-small pdl mrgl'>
+                                            <p className='onwhite font-interbold fs-17'>Day 1</p>
+                                            <span className='text-muted font-inter fs-13'>of 5</span>
+                                        </div>
+                                    </Link>
                                 </div>
 
-                                <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
+                                {/* <button className="navbar-toggler collapsed" type="button" data-toggle="collapse" data-target="#navbar-collapse">
                                     <span className="menu_toggle">
                                     <span className="hamburger">
                                         <span />
@@ -41,12 +50,12 @@ const TopBar = ({ isFixed, backgroundColor, doScroll }) => {
                                         <span />
                                     </span>
                                     </span>
-                                </button>
+                                </button> */}
                             
                             <div id="navbar-collapse" className="navbar-collapse collapse">
 
                                 {/* Right */}
-                                <ul class="nav navbar-nav right-nav ml-auto">
+                                <ul class="nav navbar-nav right-nav ml-auto ui-hide-mobile-only">
                                     <li className="nav-item link">
                                         <Link to="" className="nav-cld">
                                             <div className='cld-icon ui-text-center'>
